@@ -1,0 +1,76 @@
+/* ==========================================================================
+   STYLE.CSS - ANIMATIONS AUR VISUAL EFFECTS
+   Kaam: Yeh file floating photo, glowing gift box, aur screen par bubbles 
+   ke chalne wale animation ko control karti hai.
+   ========================================================================== */
+
+/* 1. Page par click karne se link tak smooth scrolling effect */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 2. Sister ki circular photo ko hawa mein float karne wala animation */
+@keyframes gentleFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px); /* Halka sa upar uthega */
+  }
+}
+
+.floating-card {
+  animation: gentleFloat 3.5s ease-in-out infinite;
+}
+
+/* 3. Video surprise wale gift box ka pulse aur glowing effect */
+@keyframes giftPulse {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 15px rgba(224, 168, 153, 0.4));
+  }
+  50% {
+    transform: scale(1.06); /* Box thoda bada hoga aur chamkega */
+    filter: drop-shadow(0 0 25px rgba(224, 168, 153, 0.8));
+  }
+}
+
+.gift-glow {
+  animation: giftPulse 2s infinite ease-in-out;
+}
+
+/* 4. Background Bubbles Rain Effect (Neeche se upar teerne wale bubbles) */
+.bubble-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none; /* Bubbles par click na ruke */
+  overflow: hidden;
+  z-index: 0;
+}
+
+.bubble {
+  position: absolute;
+  bottom: -60px;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(186, 230, 253, 0.3) 60%, rgba(147, 197, 253, 0.1) 100%);
+  border-radius: 50%;
+  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.6), 0 0 15px rgba(186, 230, 253, 0.4);
+  animation: floatUp 8s infinite linear;
+}
+
+/* Bubbles neeche se upar jane aur ghoomne ki setting */
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) scale(0.8) rotate(0deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.7;
+  }
+  90% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-115vh) scale(1.2) rotate(360deg);
+    opacity: 0;
+  }
+}
