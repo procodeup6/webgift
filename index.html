@@ -2,844 +2,330 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>To My Favorite Person in the World ❤️</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>To My Favorite Person in the World ❤️</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&display=swap"
-        rel="stylesheet">
+  <!-- Google Fonts: Handwritten aur Stylish Text Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <!-- Tailwind CSS (Design Layout) aur Canvas Confetti (Celebration Blast) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        roseGold: '#e0a899',
-                        dustyRose: '#9e5a63',
-                        deepPlum: '#2b1020',
-                        warmCream: '#fdfbf7',
-                        softPeach: '#fff3eb'
-                    },
-                    fontFamily: {
-                        serif: ['Playfair Display', 'serif'],
-                        handwritten: ['Caveat', 'cursive'],
-                        sans: ['Outfit', 'sans-serif']
-                    }
-                }
-            }
+  <!-- Tailwind Custom Theme Colors Config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            roseGold: '#e0a899',
+            dustyRose: '#9e5a63',
+            deepPlum: '#2b1020',
+            warmCream: '#fdfbf7',
+            softPeach: '#fff3eb'
+          },
+          fontFamily: {
+            serif: ['Playfair Display', 'serif'],
+            handwritten: ['Caveat', 'cursive'],
+            sans: ['Outfit', 'sans-serif']
+          }
         }
-    </script>
+      }
+    }
+  </script>
 
-    <style>
-        html {
-            scroll-behavior: smooth;
-        }
-
-        @keyframes gentleFloat {
-
-            0%,
-            100% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-8px);
-            }
-        }
-
-        .floating-card {
-            animation: gentleFloat 3.5s ease-in-out infinite;
-        }
-
-        @keyframes giftPulse {
-
-            0%,
-            100% {
-                transform: scale(1);
-                filter: drop-shadow(0 0 15px rgba(224, 168, 153, 0.4));
-            }
-
-            50% {
-                transform: scale(1.06);
-                filter: drop-shadow(0 0 25px rgba(224, 168, 153, 0.8));
-            }
-        }
-
-        .gift-glow {
-            animation: giftPulse 2s infinite ease-in-out;
-        }
-
-        /* Background Bubbles Animation */
-        .bubble-container {
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            overflow: hidden;
-            z-index: 0;
-        }
-
-        .bubble {
-            position: absolute;
-            bottom: -60px;
-            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(186, 230, 253, 0.3) 60%, rgba(147, 197, 253, 0.1) 100%);
-            border-radius: 50%;
-            box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.6), 0 0 15px rgba(186, 230, 253, 0.4);
-            animation: floatUp 8s infinite linear;
-        }
-
-        @keyframes floatUp {
-            0% {
-                transform: translateY(0) scale(0.8) rotate(0deg);
-                opacity: 0;
-            }
-
-            15% {
-                opacity: 0.7;
-            }
-
-            90% {
-                opacity: 0.7;
-            }
-
-            100% {
-                transform: translateY(-115vh) scale(1.2) rotate(360deg);
-                opacity: 0;
-            }
-        }
-    </style>
+  <!-- External Animation Stylesheet -->
+  <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="bg-warmCream text-stone-800 font-sans antialiased overflow-x-hidden selection:bg-roseGold
-    selection:text-white">
+<body class="bg-warmCream text-stone-800 font-sans antialiased overflow-x-hidden selection:bg-roseGold selection:text-white">
 
-    <!-- WELCOME LANDING SCREEN OVERLAY -->
-    <div id="welcome-screen"
-        class="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-[#2e1065] via-[#4c1d95] to-[#0f172a] p-4 transition-all duration-700">
+  <!-- =================================================================
+       SECTION 1: FIRST LANDING SCREEN (OPEN MY GIFT POPUP)
+       Kaam: Yeh screen sabse upar rehti hai jab tak user 'OPEN MY GIFT'
+       par click nahi karta. Click hote hi gaana shuru hota hai.
+       ================================================================= -->
+  <div id="welcome-screen" class="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-[#2e1065] via-[#4c1d95] to-[#0f172a] p-4 transition-all duration-700">
+    <div class="relative w-full max-w-sm rounded-3xl border border-purple-300/30 bg-purple-500/20 p-8 text-center shadow-2xl backdrop-blur-xl">
+      <div class="mx-auto mb-5 flex h-20 w-20 items-center justify-center rounded-full border border-purple-300/40 bg-purple-400/20 shadow-[0_0_25px_rgba(192,132,252,0.4)]">
+        <span class="text-3xl">✨🎁</span>
+      </div>
+      <p class="mb-2 text-sm font-semibold tracking-wider text-purple-200 uppercase">Special Digital Surprise</p>
+      <h1 class="mb-4 text-2xl font-extrabold text-white sm:text-3xl">For The World's Best Chudel 💖</h1>
+      <p class="mb-8 text-xs leading-relaxed text-purple-200/90 sm:text-sm">
+        Hazaaron ladaiyan, TV remote ke jhagde, aur dher saara pyaar... Yeh chhota sa digital surprise tumhare liye!
+      </p>
+      <button onclick="openGiftScreen()" class="w-full rounded-2xl bg-[#fef08a] py-3.5 text-sm font-bold tracking-wide text-purple-950 shadow-lg transition-transform duration-200 hover:scale-105 hover:bg-yellow-300 active:scale-95">
+        OPEN MY GIFT 🎁
+      </button>
+      <p class="mt-6 text-[11px] font-medium tracking-widest text-purple-300/80 uppercase">FROM: TERA PYAARA BHAI</p>
+    </div>
+  </div>
 
-        <!-- Glassmorphism Card -->
-        <div
-            class="relative w-full max-w-sm rounded-3xl border border-purple-300/30 bg-purple-500/20 p-8 text-center shadow-2xl backdrop-blur-xl">
+  <!-- =================================================================
+       SECTION 2: BACKGROUND AUDIO & FLOATING ACTION BUTTONS
+       Kaam: Background music element aur screen ke niche kone wale buttons.
+       ================================================================= -->
+  <audio id="bg-audio" src="ad.mp3" loop preload="auto"></audio>
 
-            <!-- Top Glowing Icon Circle -->
-            <div
-                class="mx-auto mb-5 flex h-20 w-20 items-center justify-center rounded-full border border-purple-300/40 bg-purple-400/20 shadow-[0_0_25px_rgba(192,132,252,0.4)]">
-                <span class="text-3xl">✨🎁</span>
-            </div>
+  <div class="fixed bottom-6 right-6 z-40 flex flex-col gap-3">
+    <!-- Heart Button: Confetti Shower -->
+    <button onclick="triggerLoveShower()" title="Shower Love" class="w-12 h-12 bg-white text-rose-500 rounded-full shadow-2xl border border-rose-100 flex items-center justify-center text-xl hover:scale-110 active:scale-95 transition-all cursor-pointer">
+      💖
+    </button>
+    <!-- Music Button: Pause / Play Toggle -->
+    <button onclick="toggleMusic()" id="music-btn" title="Toggle Music" class="w-12 h-12 bg-deepPlum text-roseGold rounded-full shadow-2xl flex items-center justify-center text-lg hover:scale-110 active:scale-95 transition-all cursor-pointer">
+      🎵
+    </button>
+  </div>
 
-            <!-- Badge / Subtitle -->
-            <p class="mb-2 text-sm font-semibold tracking-wider text-purple-200 uppercase">
-                Special Digital Surprise
-            </p>
-
-            <!-- Heading -->
-            <h1 class="mb-4 text-2xl font-extrabold text-white sm:text-3xl">
-                For The World's Best Chudel 💖
-            </h1>
-
-            <!-- Message Description -->
-            <p class="mb-8 text-xs leading-relaxed text-purple-200/90 sm:text-sm">
-                Hazaaron ladaiyan, TV remote ke jhagde, aur dher saara pyaar... Yeh chhota sa digital surprise tumhare
-                liye!
-            </p>
-
-            <!-- Open Button -->
-            <button onclick="openGiftScreen()"
-                class="w-full rounded-2xl bg-[#fef08a] py-3.5 text-sm font-bold tracking-wide text-purple-950 shadow-lg transition-transform duration-200 hover:scale-105 hover:bg-yellow-300 active:scale-95">
-                OPEN MY GIFT 🎁
-            </button>
-
-            <!-- Bottom Footer Tag -->
-            <p class="mt-6 text-[11px] font-medium tracking-widest text-purple-300/80 uppercase">
-                FROM: TERA PYAARA BHAI
-            </p>
-
-        </div>
+  <!-- =================================================================
+       SECTION 3: HERO BANNER (PHOTO & TITLE)
+       Kaam: Welcome banner, sister ki main photo, aur quick section links.
+       ================================================================= -->
+  <header class="min-h-screen relative flex flex-col items-center justify-center text-center px-6 py-16 bg-gradient-to-b from-[#fcf5f2] via-warmCream to-warmCream border-b border-stone-200/50">
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-rose-100/60 border border-rose-200 text-dustyRose text-xs font-semibold uppercase tracking-widest mb-6">
+      <span>👑</span> Certified Best Sister in the Universe
     </div>
 
-    <audio id="bg-audio" src="ad.mp3" loop preload="auto"></audio>
+    <h1 class="font-serif text-4xl sm:text-6xl text-deepPlum font-bold tracking-tight max-w-xl leading-tight mb-4">
+      To My Forever <br />
+      <span class="italic font-normal text-dustyRose font-serif">chudel</span> ✨
+    </h1>
 
-    <div class="fixed bottom-6 right-6 z-40 flex flex-col gap-3">
-        <button onclick="triggerLoveShower()" title="Shower Love"
-            class="w-12 h-12 bg-white text-rose-500 rounded-full shadow-2xl border border-rose-100 flex items-center justify-center text-xl hover:scale-110 active:scale-95 transition-all cursor-pointer">
-            💖
-        </button>
-        <button onclick="toggleMusic()" id="music-btn" title="Toggle Music"
-            class="w-12 h-12 bg-deepPlum text-roseGold rounded-full shadow-2xl flex items-center justify-center text-lg hover:scale-110 active:scale-95 transition-all cursor-pointer">
-            🎵
-        </button>
+    <p class="font-sans text-stone-600 text-sm sm:text-base max-w-md mx-auto leading-relaxed mb-8">
+      Yeh koi ordinary gallery nahi hai. Yeh tere piddi ka kiya hua kand hai ki chahe tum kitni v ladai kro, aur kitni v ignore tumko always yaad dilayega chudel kitni bhi makeup kr le ------ (alert : aage chudel ki khauf hai 🤭).
+    </p>
+
+    <!-- Floating Circular Sister Image -->
+    <div class="relative w-44 h-44 rounded-full p-2 bg-gradient-to-tr from-roseGold via-dustyRose to-deepPlum shadow-2xl mb-8 floating-card">
+      <div class="w-full h-full rounded-full overflow-hidden border-4 border-white">
+        <img src="https://drive.google.com/file/d/1QVqYMvbMwAPWv6K0_npM4lq9wOF0UrFm/view?usp=sharing" alt="Sister" class="w-full h-full object-cover">
+      </div>
+      <div class="absolute -bottom-2 -right-1 bg-white px-3 py-1 rounded-full shadow border border-stone-200 text-xs font-handwritten text-xl font-bold text-dustyRose">
+        Meri hathni 🌸
+      </div>
     </div>
 
-    <header
-        class="min-h-screen relative flex flex-col items-center justify-center text-center px-6 py-16 bg-gradient-to-b from-[#fcf5f2] via-warmCream to-warmCream border-b border-stone-200/50">
+    <!-- Quick Navigation Jump Buttons -->
+    <div class="flex flex-wrap gap-2 justify-center text-xs font-semibold">
+      <a href="#photo-slider-sec" class="px-5 py-2.5 bg-white border border-stone-200 rounded-full shadow-sm hover:border-dustyRose transition-colors">📸 Memories Slider</a>
+      <a href="#video-surprise-sec" class="px-5 py-2.5 bg-deepPlum text-roseGold rounded-full shadow-sm hover:brightness-110 transition-colors">🎁 Video Surprise</a>
+      <a href="#cheer-jar" class="px-5 py-2.5 bg-dustyRose text-white rounded-full shadow-sm hover:bg-deepPlum transition-colors">✨ Cheer-Up Jar</a>
+    </div>
 
-        <div
-            class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-rose-100/60 border border-rose-200 text-dustyRose text-xs font-semibold uppercase tracking-widest mb-6">
-            <span>👑</span> Certified Best Sister in the Universe
+    <div class="absolute bottom-4 animate-bounce text-stone-400 text-lg">↓</div>
+  </header>
+
+  <main class="max-w-xl mx-auto px-6 py-12 space-y-20">
+
+    <!-- =================================================================
+         SECTION 4: MEMORIES PHOTO SLIDER
+         Kaam: Next/Previous photo slider with captions and dots indicator.
+         ================================================================= -->
+    <section id="photo-slider-sec">
+      <div class="text-center mb-6">
+        <span class="text-xs font-bold uppercase tracking-widest text-dustyRose">Unfiltered Memories</span>
+        <h2 class="font-serif text-3xl font-bold text-deepPlum mt-1">Some Memories 📸</h2>
+        <p class="text-xs text-stone-500 mt-1">Slide karke apni chudelgiri moments dekho!</p>
+      </div>
+
+      <div class="relative bg-white p-4 pb-8 rounded-3xl border border-stone-200 shadow-xl max-w-sm mx-auto">
+        <div class="w-full h-72 sm:h-80 rounded-2xl overflow-hidden bg-stone-100 relative shadow-inner">
+          <img id="polaroid-img" src="" alt="Memory" class="w-full h-full object-cover transition-opacity duration-300" />
+          <div class="absolute top-3 right-3 bg-black/60 backdrop-blur-md text-white px-2.5 py-1 rounded-full text-[10px] font-bold tracking-wider">
+            <span id="photo-counter">1 / 4</span>
+          </div>
         </div>
 
-        <h1 class="font-serif text-4xl sm:text-6xl text-deepPlum font-bold tracking-tight max-w-xl leading-tight mb-4">
-            To My Forever <br />
-            <span class="italic font-normal text-dustyRose font-serif">chudel</span> ✨
-        </h1>
+        <div class="mt-4 px-2 text-center">
+          <div class="flex items-center justify-center gap-2">
+            <span id="photo-emoji" class="text-2xl">🍿</span>
+            <h3 id="photo-title" class="font-handwritten text-2xl sm:text-3xl text-deepPlum font-bold">Caption Title</h3>
+          </div>
+          <p id="photo-desc" class="text-xs text-stone-600 mt-1 leading-relaxed">Description goes here...</p>
+        </div>
 
-        <p class="font-sans text-stone-600 text-sm sm:text-base max-w-md mx-auto leading-relaxed mb-8">
-            Yeh koi ordinary gallery nahi hai. Yeh tere piddi ka kiya hua kand hai ki chahe tum kitni v ladai
-            kro, aur kitni v ignore tumko always yaad dilayega chudel kitni bhi makup kr le ------ (alrt : aage chudel
-            ki khoff hai 🤭).
+        <div class="mt-6 flex items-center justify-between px-2">
+          <button onclick="prevPhoto()" class="w-10 h-10 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-700 flex items-center justify-center font-bold text-lg transition-all active:scale-90 cursor-pointer shadow-sm">‹</button>
+          <div id="photo-dots" class="flex gap-1.5"></div>
+          <button onclick="nextPhoto()" class="w-10 h-10 rounded-full bg-deepPlum text-roseGold hover:brightness-110 flex items-center justify-center font-bold text-lg transition-all active:scale-90 cursor-pointer shadow-sm">›</button>
+        </div>
+      </div>
+    </section>
 
+    <!-- =================================================================
+         SECTION 5: VIDEO SURPRISE (LOCKED TO UNLOCKED BOX)
+         Kaam: Locked gift box par tap karte hi video player khulta hai.
+         ================================================================= -->
+    <section id="video-surprise-sec" class="relative">
+      <div id="video-locked-box" class="bg-gradient-to-br from-deepPlum via-[#381329] to-deepPlum text-white p-8 rounded-3xl shadow-2xl text-center border border-roseGold/30 relative overflow-hidden">
+        <div class="absolute -top-10 -right-10 w-32 h-32 bg-roseGold/20 rounded-full blur-2xl"></div>
+        <div class="w-24 h-24 mx-auto mb-4 bg-white/10 rounded-full border-2 border-roseGold/50 flex items-center justify-center text-5xl gift-glow">🎁</div>
+        <span class="text-[10px] uppercase font-bold tracking-[0.3em] text-roseGold">Special Surprise Unlocked</span>
+        <h2 class="font-serif text-2xl sm:text-3xl font-bold mt-2 mb-2">A Mystery Video For You 🎬</h2>
+        <p class="text-xs text-stone-300 max-w-xs mx-auto mb-6 leading-relaxed">
+          Bhai ne tere liye kuch special clip curate kiya hai. Tap karke surprise unwrap karo!
         </p>
+        <button onclick="unlockVideoSurprise()" class="w-full py-4 bg-gradient-to-r from-roseGold via-pink-300 to-roseGold text-deepPlum font-bold text-sm uppercase tracking-widest rounded-2xl shadow-2xl hover:brightness-110 active:scale-95 transition-all cursor-pointer">
+          Open Video Surprise 🎊
+        </button>
+      </div>
 
-        <div
-            class="relative w-44 h-44 rounded-full p-2 bg-gradient-to-tr from-roseGold via-dustyRose to-deepPlum shadow-2xl mb-8 floating-card">
-            <div class="w-full h-full rounded-full overflow-hidden border-4 border-white">
-                <img src="https://drive.google.com/file/d/1QVqYMvbMwAPWv6K0_npM4lq9wOF0UrFm/view?usp=sharing"
-                    alt="Sister" class="w-full h-full object-cover">
-            </div>
-            <div
-                class="absolute -bottom-2 -right-1 bg-white px-3 py-1 rounded-full shadow border border-stone-200 text-xs font-handwritten text-xl font-bold text-dustyRose">
-                Meri hathni 🌸
-            </div>
+      <div id="video-unlocked-box" class="hidden bg-deepPlum text-white p-6 sm:p-8 rounded-3xl shadow-2xl border border-roseGold/30 relative overflow-hidden transition-all duration-700">
+        <div class="text-center mb-5">
+          <span class="text-[10px] uppercase font-bold tracking-[0.25em] text-roseGold bg-roseGold/10 px-3 py-1 rounded-full border border-roseGold/30">✨ Cinema Of Us</span>
+          <h2 id="current-video-title" class="font-serif text-2xl font-bold mt-2">Video Title</h2>
+          <p id="current-video-caption" class="text-xs text-stone-300 mt-1">Yeh video dekh ke hamesha chehre par smile aa jati hai.</p>
         </div>
-
-        <div class="flex flex-wrap gap-2 justify-center text-xs font-semibold">
-            <a href="#photo-slider-sec"
-                class="px-5 py-2.5 bg-white border border-stone-200 rounded-full shadow-sm hover:border-dustyRose transition-colors">📸
-                Memories Slider</a>
-            <a href="#video-surprise-sec"
-                class="px-5 py-2.5 bg-deepPlum text-roseGold rounded-full shadow-sm hover:brightness-110 transition-colors">🎁
-                Video Surprise</a>
-            <a href="#cheer-jar"
-                class="px-5 py-2.5 bg-dustyRose text-white rounded-full shadow-sm hover:bg-deepPlum transition-colors">✨
-                Cheer-Up Jar</a>
+        <div class="relative w-full aspect-[9/16] max-w-xs mx-auto rounded-2xl overflow-hidden shadow-2xl border-4 border-stone-700 bg-black">
+          <video id="main-video-player" class="w-full h-full object-cover" controls playsinline>
+            <source id="video-source" src="" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
         </div>
+        <div class="mt-6 flex items-center justify-between max-w-xs mx-auto bg-white/5 p-3 rounded-2xl border border-white/10">
+          <button onclick="prevVideo()" class="px-4 py-2 bg-white/10 hover:bg-white/20 text-xs font-bold uppercase rounded-xl transition-all active:scale-95 cursor-pointer">‹ Prev Video</button>
+          <span id="video-counter" class="text-xs font-bold text-roseGold tracking-widest">1 / 2</span>
+          <button onclick="nextVideo()" class="px-4 py-2 bg-roseGold text-deepPlum hover:brightness-110 text-xs font-bold uppercase rounded-xl transition-all active:scale-95 cursor-pointer">Next Video ›</button>
+        </div>
+      </div>
+    </section>
 
-        <div class="absolute bottom-4 animate-bounce text-stone-400 text-lg">↓</div>
-    </header>
+    <!-- =================================================================
+         SECTION 6: CHEER-UP JAR (RANDOM QUOTES)
+         Kaam: Click karne par bhai ke funny aur motivating quotes nikalta hai.
+         ================================================================= -->
+    <section id="cheer-jar" class="bg-gradient-to-br from-softPeach via-white to-softPeach p-6 sm:p-8 rounded-3xl border border-roseGold/40 shadow-sm text-center">
+      <span class="text-xs font-bold uppercase tracking-widest text-dustyRose">Whenever You Feel Low</span>
+      <h2 class="font-serif text-3xl font-bold text-deepPlum mt-1 mb-2">Bhai's Cheer-Up Jar 🏺</h2>
+      <p class="text-xs text-stone-500 max-w-xs mx-auto mb-6">Jab bhi mood off ho ya tired lag raha ho, iss button ko press karo:</p>
+      <div class="bg-white p-6 rounded-2xl border border-stone-200 shadow-inner min-h-[140px] flex flex-col items-center justify-center transition-all duration-300">
+        <p id="jar-quote" class="font-serif italic text-base sm:text-lg text-deepPlum leading-relaxed">
+          "Tere jaisi nautanki aur pyaari behen pure brahmand me kisi ke paas nahi hai. Smile kar ab!" 😊
+        </p>
+        <span id="jar-author" class="text-[11px] font-semibold text-dustyRose tracking-widest uppercase mt-3">— Tere Bhai Ka Farmaan</span>
+      </div>
+      <button onclick="pullNewNote()" class="mt-6 px-7 py-3 bg-gradient-to-r from-dustyRose to-deepPlum text-white text-xs font-bold uppercase tracking-wider rounded-full shadow-lg hover:brightness-110 active:scale-95 transition-all cursor-pointer">
+        Give Me Another Hug / Note 💌
+      </button>
+    </section>
 
-    <main class="max-w-xl mx-auto px-6 py-12 space-y-20">
+    <!-- =================================================================
+         SECTION 7: BUBBLE RAIN & SCRATCH CARDS (BHAI KE VACHAN)
+         Kaam: Floating bubbles generator aur scratch karne wale gift cards.
+         ================================================================= -->
+    <section>
+      <!-- Background Bubbles Generator Holder -->
+      <div id="bubble-container" class="bubble-container"></div>
 
-        <section id="photo-slider-sec">
-            <div class="text-center mb-6">
-                <span class="text-xs font-bold uppercase tracking-widest text-dustyRose">Unfiltered Memories</span>
-                <h2 class="font-serif text-3xl font-bold text-deepPlum mt-1">Some Memories 📸</h2>
-                <p class="text-xs text-stone-500 mt-1">Slide karke apni chudelgiri moments dekho!</p>
+      <div class="relative z-10 mx-auto max-w-sm px-4 py-8 text-center">
+        <p class="text-xs font-bold tracking-widest text-amber-700 uppercase">Scratch & Win</p>
+        <h2 class="mt-1 text-2xl font-extrabold text-slate-800">Bhai Ke Vachan (Coupons)</h2>
+        <p class="mt-1 text-xs text-slate-500">Card scratch karo aur apna gift claim karo!</p>
+
+        <div class="mt-6 flex flex-col gap-4">
+          <!-- Scratch Card 1 -->
+          <div class="scratch-card relative h-56 w-full overflow-hidden rounded-2xl shadow-md">
+            <div class="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-amber-50 to-orange-100 p-3 text-center">
+              <h3 class="text-base font-bold text-slate-800">THIS IS LIFE:</h3>
+              <p class="mt-1 text-[11px] leading-snug text-slate-600">
+                You are not beautiful, just your age is beautiful. It doesn't matter how you look, everything changes with age. At the end you need a holding hand, not a perfect body & face. You are you and that's great!
+              </p>
             </div>
+            <canvas class="scratch-canvas absolute inset-0 z-10 h-full w-full cursor-pointer"></canvas>
+          </div>
 
-            <div class="relative bg-white p-4 pb-8 rounded-3xl border border-stone-200 shadow-xl max-w-sm mx-auto">
-
-                <div class="w-full h-72 sm:h-80 rounded-2xl overflow-hidden bg-stone-100 relative shadow-inner">
-                    <img id="polaroid-img" src="" alt="Memory"
-                        class="w-full h-full object-cover transition-opacity duration-300" />
-                    <div
-                        class="absolute top-3 right-3 bg-black/60 backdrop-blur-md text-white px-2.5 py-1 rounded-full text-[10px] font-bold tracking-wider">
-                        <span id="photo-counter">1 / 4</span>
-                    </div>
-                </div>
-
-                <div class="mt-4 px-2 text-center">
-                    <div class="flex items-center justify-center gap-2">
-                        <span id="photo-emoji" class="text-2xl">🍿</span>
-                        <h3 id="photo-title" class="font-handwritten text-2xl sm:text-3xl text-deepPlum font-bold">
-                            Caption Title</h3>
-                    </div>
-                    <p id="photo-desc" class="text-xs text-stone-600 mt-1 leading-relaxed">Description goes here...</p>
-                </div>
-
-                <div class="mt-6 flex items-center justify-between px-2">
-                    <button onclick="prevPhoto()"
-                        class="w-10 h-10 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-700 flex items-center justify-center font-bold text-lg transition-all active:scale-90 cursor-pointer shadow-sm">
-                        ‹
-                    </button>
-
-                    <div id="photo-dots" class="flex gap-1.5"></div>
-
-                    <button onclick="nextPhoto()"
-                        class="w-10 h-10 rounded-full bg-deepPlum text-roseGold hover:brightness-110 flex items-center justify-center font-bold text-lg transition-all active:scale-90 cursor-pointer shadow-sm">
-                        ›
-                    </button>
-                </div>
-
+          <!-- Scratch Card 2 -->
+          <div class="scratch-card relative h-56 w-full overflow-hidden rounded-2xl shadow-md">
+            <div class="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-purple-50 to-pink-100 p-3 text-center">
+              <h3 class="text-base font-bold text-slate-800">Mummy Se Bachao Pass 🛡️</h3>
+              <p class="mt-1 text-xs text-slate-600">Galti teri, blame on myself!</p>
             </div>
-        </section>
+            <canvas class="scratch-canvas absolute inset-0 z-10 h-full w-full cursor-pointer"></canvas>
+          </div>
 
-        <section id="video-surprise-sec" class="relative">
-
-            <div id="video-locked-box"
-                class="bg-gradient-to-br from-deepPlum via-[#381329] to-deepPlum text-white p-8 rounded-3xl shadow-2xl text-center border border-roseGold/30 relative overflow-hidden">
-                <div class="absolute -top-10 -right-10 w-32 h-32 bg-roseGold/20 rounded-full blur-2xl"></div>
-
-                <div
-                    class="w-24 h-24 mx-auto mb-4 bg-white/10 rounded-full border-2 border-roseGold/50 flex items-center justify-center text-5xl gift-glow">
-                    🎁
-                </div>
-
-                <span class="text-[10px] uppercase font-bold tracking-[0.3em] text-roseGold">Special Surprise
-                    Unlocked</span>
-                <h2 class="font-serif text-2xl sm:text-3xl font-bold mt-2 mb-2">A Mystery Video For You 🎬</h2>
-                <p class="text-xs text-stone-300 max-w-xs mx-auto mb-6 leading-relaxed">
-                    Bhai ne tere liye kuch special clip curate kiya hai. Tap karke surprise unwrap karo!
-                </p>
-
-                <button onclick="unlockVideoSurprise()"
-                    class="w-full py-4 bg-gradient-to-r from-roseGold via-pink-300 to-roseGold text-deepPlum font-bold text-sm uppercase tracking-widest rounded-2xl shadow-2xl hover:brightness-110 active:scale-95 transition-all cursor-pointer">
-                    Open Video Surprise 🎊
-                </button>
+          <!-- Scratch Card 3 -->
+          <div class="scratch-card relative h-56 w-full overflow-hidden rounded-2xl shadow-md">
+            <div class="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-emerald-50 to-teal-100 p-3 text-center">
+              <h3 class="text-base font-bold text-slate-800">Unlimited Shopping Treat 🛍️</h3>
+              <p class="mt-1 text-xs text-slate-600">Cart tera, payment ready mera!</p>
             </div>
-
-            <div id="video-unlocked-box"
-                class="hidden bg-deepPlum text-white p-6 sm:p-8 rounded-3xl shadow-2xl border border-roseGold/30 relative overflow-hidden transition-all duration-700">
-
-                <div class="text-center mb-5">
-                    <span
-                        class="text-[10px] uppercase font-bold tracking-[0.25em] text-roseGold bg-roseGold/10 px-3 py-1 rounded-full border border-roseGold/30">✨
-                        Cinema Of Us</span>
-                    <h2 id="current-video-title" class="font-serif text-2xl font-bold mt-2">Video Title</h2>
-                    <p id="current-video-caption" class="text-xs text-stone-300 mt-1">Yeh video dekh ke hamesha chehre
-                        par smile aa jati hai.</p>
-                </div>
-
-                <div
-                    class="relative w-full aspect-[9/16] max-w-xs mx-auto rounded-2xl overflow-hidden shadow-2xl border-4 border-stone-700 bg-black">
-                    <video id="main-video-player" class="w-full h-full object-cover" controls playsinline>
-                        <source id="video-source" src="" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-
-                <div
-                    class="mt-6 flex items-center justify-between max-w-xs mx-auto bg-white/5 p-3 rounded-2xl border border-white/10">
-                    <button onclick="prevVideo()"
-                        class="px-4 py-2 bg-white/10 hover:bg-white/20 text-xs font-bold uppercase rounded-xl transition-all active:scale-95 cursor-pointer">
-                        ‹ Prev Video
-                    </button>
-
-                    <span id="video-counter" class="text-xs font-bold text-roseGold tracking-widest">1 / 2</span>
-
-                    <button onclick="nextVideo()"
-                        class="px-4 py-2 bg-roseGold text-deepPlum hover:brightness-110 text-xs font-bold uppercase rounded-xl transition-all active:scale-95 cursor-pointer">
-                        Next Video ›
-                    </button>
-                </div>
-
-                <p class="text-center text-[10px] text-stone-400 mt-3">
-                    💡 *Tip: Video chalate waqt audio ON kar lena!*
-                </p>
-            </div>
-
-        </section>
-
-        <section id="cheer-jar"
-            class="bg-gradient-to-br from-softPeach via-white to-softPeach p-6 sm:p-8 rounded-3xl border border-roseGold/40 shadow-sm text-center">
-            <span class="text-xs font-bold uppercase tracking-widest text-dustyRose">Whenever You Feel Low</span>
-            <h2 class="font-serif text-3xl font-bold text-deepPlum mt-1 mb-2">Bhai's Cheer-Up Jar 🏺</h2>
-            <p class="text-xs text-stone-500 max-w-xs mx-auto mb-6">
-                Jab bhi mood off ho ya tired lag raha ho, iss button ko press karo:
-            </p>
-
-            <div
-                class="bg-white p-6 rounded-2xl border border-stone-200 shadow-inner min-h-[140px] flex flex-col items-center justify-center transition-all duration-300">
-                <p id="jar-quote" class="font-serif italic text-base sm:text-lg text-deepPlum leading-relaxed">
-                    "Tere jaisi nautanki aur pyaari behen pure brahmand me kisi ke paas nahi hai. Smile kar ab!" 😊
-                </p>
-                <span id="jar-author" class="text-[11px] font-semibold text-dustyRose tracking-widest uppercase mt-3">
-                    — Tere Bhai Ka Farmaan
-                </span>
-            </div>
-
-            <button onclick="pullNewNote()"
-                class="mt-6 px-7 py-3 bg-gradient-to-r from-dustyRose to-deepPlum text-white text-xs font-bold uppercase tracking-wider rounded-full shadow-lg hover:brightness-110 active:scale-95 transition-all cursor-pointer">
-                Give Me Another Hug / Note 💌
-            </button>
-        </section>
-
-        <section>
-            <!-- Bubbles Background Container -->
-            <div id="bubble-container" class="bubble-container"></div>
-
-            <!-- Scratch Cards Section -->
-            <div class="relative z-10 mx-auto max-w-sm px-4 py-8 text-center">
-                <p class="text-xs font-bold tracking-widest text-amber-700 uppercase">Scratch & Win</p>
-                <h2 class="mt-1 text-2xl font-extrabold text-slate-800">Bhai Ke Vachan (Coupons)</h2>
-                <p class="mt-1 text-xs text-slate-500">Card scratch karo aur apna gift claim karo!</p>
-
-                <div class="mt-6 flex flex-col gap-4">
-                    <!-- Card 1 -->
-                    <div class="scratch-card relative h-56 w-full overflow-hidden rounded-2xl shadow-md">
-                        <div
-                            class="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-amber-50 to-orange-100 p-3 text-center">
-                            <h3 class="text-base font-bold text-slate-800">THIS IS LIFE:</h3>
-                            <p class="mt-1 text-xs text-slate-600">
-                                You are not beautiful, just your age is beautiful.
-                                It doesn't matter how you look and what's your skin calor coz everything will change
-                                with age.
-                                At the end you need a holding hand, not a perfect body & beautiful face.
-                                Everyone is beautiful in their own way. You are not fat, slim, small, ugly, black,
-                                white.
-                                You are you and that's great.
-                                Don't judge anyone with their temporary
-                                appearance.</p>
-                        </div>
-                        <canvas class="scratch-canvas absolute inset-0 z-10 h-full w-full cursor-pointer"></canvas>
-                    </div>
-
-                    <!-- Card 2 -->
-                    <div class="scratch-card relative h-56 w-full overflow-hidden rounded-2xl shadow-md">
-                        <div
-                            class="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-purple-50 to-pink-100 p-3 text-center">
-                            <h3 class="text-base font-bold text-slate-800">Mummy Se Bachao Pass 🛡️</h3>
-                            <p class="mt-1 text-xs text-slate-600">Galti teri, blame on myself!</p>
-                        </div>
-                        <canvas class="scratch-canvas absolute inset-0 z-10 h-full w-full cursor-pointer"></canvas>
-                    </div>
-
-                    <!-- Card 3 -->
-                    <div class="scratch-card relative h-56 w-full overflow-hidden rounded-2xl shadow-md">
-                        <div
-                            class="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-emerald-50 to-teal-100 p-3 text-center">
-                            <h3 class="text-base font-bold text-slate-800">Unlimited Shopping Treat 🛍️</h3>
-                            <p class="mt-1 text-xs text-slate-600">Cart tera, payment ready mera!</p>
-                        </div>
-                        <canvas class="scratch-canvas absolute inset-0 z-10 h-full w-full cursor-pointer"></canvas>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-
-
-
-        <section>
-            <div class="text-center mb-6">
-                <span class="text-xs font-bold uppercase tracking-widest text-dustyRose">Legally Binding</span>
-                <h2 class="font-serif text-2xl font-bold text-deepPlum mt-1">The Official Sibling Agreement 📜</h2>
-            </div>
-
-            <div class="space-y-3 text-xs">
-                <div class="bg-white p-4 rounded-xl border border-stone-200 flex items-start gap-3 shadow-sm">
-                    <span class="text-lg">🛡️</span>
-                    <div>
-                        <h3 class="font-bold text-stone-800">Clause 1: 100% Defense Mechanism</h3>
-                        <p class="text-stone-500 mt-0.5">Duniya tere khilaaf ho jaye, tera bhai hamesha teri side khada
-                            rahega (chahe galti teri hi kyun na ho!).</p>
-                    </div>
-                </div>
-
-                <div class="bg-white p-4 rounded-xl border border-stone-200 flex items-start gap-3 shadow-sm">
-                    <span class="text-lg">🍕</span>
-                    <div>
-                        <h3 class="font-bold text-stone-800">Clause 2: The Last Bite Tax</h3>
-                        <p class="text-stone-500 mt-0.5">Chahe main kitna bhi natak karu, aakhiri slice hamesha tera hi
-                            rahega.</p>
-                    </div>
-                </div>
-
-                <div class="bg-white p-4 rounded-xl border border-stone-200 flex items-start gap-3 shadow-sm">
-                    <span class="text-lg">📞</span>
-                    <div>
-                        <h3 class="font-bold text-stone-800">Clause 3: 24/7 Venting Hotline</h3>
-                        <p class="text-stone-500 mt-0.5">Kabhi bhi rona ho, kisi ki chugli karni ho ya gussa nikalna ho,
-                            phone uthane me 1 second lagega.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="relative bg-white p-8 rounded-3xl border border-rose-200/80 shadow-xl overflow-hidden">
-            <div
-                class="w-10 h-10 rounded-full bg-rose-50 border border-rose-200 text-rose-500 flex items-center justify-center mx-auto mb-4 text-xl">
-                ✉️
-            </div>
-
-            <h3 class="font-serif text-2xl text-deepPlum text-center font-bold mb-4">Direct Dil Se...</h3>
-
-            <div class="space-y-4 font-serif text-sm text-stone-700 leading-relaxed italic">
-                <p>
-                    "Zindagi me dost aayenge, jayenge, log badlenge... lekin ek rishta jo hamesha constant rahega, wo
-                    hai humara.
-                </p>
-                <p>
-                    Main shayad roz bolta nahi hoon ya tareef karne me thoda ajeeb lagta hai, par sach yeh hai ki tere
-                    bina meri life bilkul boring hoti. Teri hasi, tera choti choti baaton pe gussa hona, aur fir 'Bhai
-                    meri sun na' bolna — yahi sab meri duniya hai.
-                </p>
-                <p>
-                    Chahe tu kitni bhi badi ho jaye, tera bhai hamesha tera sabse bada supporter aur teri sabse majboot
-                    dhaal ban ke rahega. Always proud of you, Behna!"
-                </p>
-            </div>
-
-            <div class="mt-8 pt-6 border-t border-stone-100 flex items-center justify-between">
-                <div>
-                    <p class="text-[10px] uppercase font-bold tracking-widest text-stone-400">Love You Forever</p>
-                    <p class="font-handwritten text-2xl font-bold text-dustyRose">Subhchintak ❤️</p>
-                </div>
-                <button onclick="triggerLoveShower()"
-                    class="px-4 py-2 bg-rose-50 hover:bg-rose-100 text-dustyRose rounded-full text-xs font-bold transition-colors cursor-pointer">
-                    Hug Bhai 🫂
-                </button>
-            </div>
-        </section>
-
-    </main>
-
-    <footer class="text-center py-10 text-stone-400 text-xs border-t border-stone-200/50">
-        <p class="font-serif italic text-stone-500">Made exclusively for the prettiest sister in the world.</p>
-        <p class="mt-1 text-[10px] tracking-widest text-stone-400">#aT_Rahul😇</p>
-    </footer>
-
-    <script>
-        /* ==========================================================
-        1. PHOTO MEMORIES LIST (Aap yahan jitni chahe photos add karein)
-           ========================================================== */
-
-        const driveIds = [
-            "1orf3t-JoAsXODB67IVwwb2ssIiq2vfu8",
-            "1XONsoB6sgHWXMCAmWSt69G3HkuXXVMd6",
-            "1Gtwlxrgtpy5y52SFGXygG22URFqWnHKr",
-            "1hrq-kI-o5ylv2DYilV0Pv_tJfhG-ZGep",
-            "1FRdR8pljFpFpLdohyDAk2TVYYLQX2Pzo",
-            "1VjbSAq0zIe9fuKAUkNcO6Y8nHLyAm-X-",
-            "1WugHxR1nLHoWaA5xbs0WIgOcTAKmc8br",
-            "1vzdug0uG4evdnrUS604pFo66Er2zUNA0",
-            "1nQG3zxOB9zNFYdp7LJXX1xfQc3Xm79b5",
-
-        ];
-        const imgQt = [
-            "Hamari pyari yaadein ❤️",
-            "Bachpan ki masti aur shaitani 😜",
-            "TV remote ke liye ladaiyan 😂",
-            "Tere gusse ka asli reason 🤭",
-            "Meri chudelgiri ka proof 😎",
-            "Tere liye mera pyaar 💖",
-            "Hamari secret language 🤫",
-            "दावत बड़ी हो या छोटी, बात तो बस दिल से खिलाने की है 🍲",
-            "Hamesha saath, hamesha besties 👯‍♀️"
-        ];
-
-        const photoList = driveIds.map((id, index) => ({
-            url: `https://drive.google.com/thumbnail?id=${id}&sz=w1000`,
-            title: `Memory #${index + 1}`,
-            desc: imgQt[index],
-            emoji: "📸"
-        }));
-
-        let currentPhotoIdx = 0;
-        const polaroidImg = document.getElementById('polaroid-img');
-        const photoTitle = document.getElementById('photo-title');
-        const photoDesc = document.getElementById('photo-desc');
-        const photoEmoji = document.getElementById('photo-emoji');
-        const photoCounter = document.getElementById('photo-counter');
-        const photoDots = document.getElementById('photo-dots');
-
-        function initPhotoDots() {
-            photoDots.innerHTML = '';
-            photoList.forEach((_, idx) => {
-                const dot = document.createElement('span');
-                dot.className = `w-2 h-2 rounded-full transition-all ${idx === currentPhotoIdx ? 'bg-deepPlum w-4' : 'bg-stone-300'}`;
-                photoDots.appendChild(dot);
-            });
-        }
-
-        function renderPhoto(index) {
-            currentPhotoIdx = (index + photoList.length) % photoList.length;
-            polaroidImg.style.opacity = '0';
-            setTimeout(() => {
-                const item = photoList[currentPhotoIdx];
-                const driveMatch = item.url.match(/\/d\/([a-zA-Z0-9_-]+)/);
-                polaroidImg.src = driveMatch ? `https://drive.google.com/thumbnail?id=${driveMatch[1]}&sz=w1000` : item.url;
-                photoTitle.innerText = item.title;
-                photoDesc.innerText = item.desc;
-                photoEmoji.innerText = item.emoji;
-                photoCounter.innerText = `${currentPhotoIdx + 1} / ${photoList.length}`;
-                polaroidImg.style.opacity = '1';
-                initPhotoDots();
-            }, 200);
-        }
-
-        function nextPhoto() { renderPhoto(currentPhotoIdx + 1); }
-        function prevPhoto() { renderPhoto(currentPhotoIdx - 1); }
-
-        // Initial render
-        renderPhoto(0);
-
-        /* ==========================================================
-           2. VIDEO REEL LIST (Aap yahan jitne chahe videos add karein)
-           ========================================================== */
-        const videoList = [
-            {
-                src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-                title: "Our Craziest Clip 🎬",
-                caption: "Yeh video dekh ke hamesha chehre par smile aa jati hai!"
-            },
-            {
-                src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-                title: "Sibling Laughter Therapy 😂",
-                caption: "Bina kisi reason ke hasna koi humse seekhe!"
-            }
-        ];
-
-        let currentVideoIdx = 0;
-        const lockedBox = document.getElementById('video-locked-box');
-        const unlockedBox = document.getElementById('video-unlocked-box');
-        const videoPlayer = document.getElementById('main-video-player');
-        const videoSource = document.getElementById('video-source');
-        const videoTitle = document.getElementById('current-video-title');
-        const videoCaption = document.getElementById('current-video-caption');
-        const videoCounter = document.getElementById('video-counter');
-
-        function updateVideoDisplay(idx) {
-            currentVideoIdx = (idx + videoList.length) % videoList.length;
-            const v = videoList[currentVideoIdx];
-
-            videoSource.src = v.src;
-            videoPlayer.load();
-            videoTitle.innerText = v.title;
-            videoCaption.innerText = v.caption;
-            videoCounter.innerText = `${currentVideoIdx + 1} / ${videoList.length}`;
-            videoPlayer.play().catch(() => { });
-        }
-
-        function nextVideo() { updateVideoDisplay(currentVideoIdx + 1); }
-        function prevVideo() { updateVideoDisplay(currentVideoIdx - 1); }
-
-        // Surprise Unlock Action
-        function unlockVideoSurprise() {
-            // 1. Triple Confetti Blast for Celebration
-            const count = 200;
-            const defaults = { origin: { y: 0.7 } };
-
-            function fire(particleRatio, opts) {
-                confetti(Object.assign({}, defaults, opts, {
-                    particleCount: Math.floor(count * particleRatio)
-                }));
-            }
-
-            fire(0.25, { spread: 26, startVelocity: 55 });
-            fire(0.2, { spread: 60 });
-            fire(0.35, { spread: 100, decay: 0.91, scalar: 0.8 });
-            fire(0.1, { spread: 120, startVelocity: 25, decay: 0.92, scalar: 1.2 });
-            fire(0.1, { spread: 120, startVelocity: 45 });
-
-            // 2. Hide Locked Box, Show Video Player
-            lockedBox.style.opacity = '0';
-            setTimeout(() => {
-                lockedBox.style.display = 'none';
-                unlockedBox.classList.remove('hidden');
-                updateVideoDisplay(0);
-            }, 400);
-        }
-
-        /* ==========================================================
-           3. AUDIO & INTERACTIVE HELPERS
-           ========================================================== */
-        let isMusicPlaying = false;
-        const bgAudio = document.getElementById('bg-audio');
-        const musicBtn = document.getElementById('music-btn');
-
-        // Music play function
-
-        let isMusicPlaying = false;
-        const bgAudio = document.getElementById('bg-audio');
-        const musicBtn = document.getElementById('music-btn');
-
-        function playMusic() {
-          if (!bgAudio) {
-            console.error("Audio element '#bg-audio' nahi mila! HTML check karein.");
-            return;
-          }
-
-          bgAudio.play().then(() => {
-            isMusicPlaying = true;
-            if (musicBtn) musicBtn.innerText = '🎵';
-            console.log("Music playing successfully!");
-          }).catch((err) => {
-            console.warn("Play error / Autoplay blocked:", err.message);
-          });
-        }
-
-        function toggleMusic() {
-          if (!bgAudio) return;
-          if (isMusicPlaying) {
-            bgAudio.pause();
-            isMusicPlaying = false;
-            if (musicBtn) musicBtn.innerText = '⏸️';
-          } else {
-            playMusic();
-          }
-        }
-
-        // User ke kisi bhi pehle tap/click par audio trigger
-        document.addEventListener('pointerdown', function startMusicOnce() {
-          if (!isMusicPlaying) {
-            playMusic();
-          }
-        }, { once: true });
-        
-        // 1. Page load hote hi auto-play karne ki koshish karega
-        playMusic();
-
-// 2. Browser policy bypass: Screen par kahin bhi pehla touch/click (jaise Open Gift button) hote hi music automatic shuru ho jayega
-document.addEventListener('click', function autoStartOnFirstClick() {
-    if (!isMusicPlaying) {
-        playMusic();
-    }
-}, { once: true });
-
-        function triggerLoveShower() {
-            try {
-                confetti({
-                    particleCount: 75,
-                    spread: 80,
-                    origin: { y: 0.6 }
-                });
-            } catch (e) { }
-        }
-
-        const cheerNotes = [
-            "Tere jaisi nautanki aur pyaari behen pure brahmand me kisi ke paas nahi hai. Smile kar ab! 😊",
-            "Kisine kuch bola kya? Naam bata uska, abhi danda leke nikalta hoon! 😤🏏",
-            "Tu tension mat liya kar, tera bhai zinda hai abhi! Sab sambhal lenge. 💪",
-            "Rona band kar! Jyada emotional mat ho, warna bachpan ki photos leak kar dunga! 😜📸",
-            "Chal ready ho ja, aaj sham ko teri favorite ice-cream meri taraf se! 🍦🍨"
-        ];
-
-        let lastNoteIdx = 0;
-        function pullNewNote() {
-            let nextIdx;
-            do {
-                nextIdx = Math.floor(Math.random() * cheerNotes.length);
-            } while (nextIdx === lastNoteIdx);
-            lastNoteIdx = nextIdx;
-
-            const quoteEl = document.getElementById('jar-quote');
-            quoteEl.style.opacity = '0';
-            setTimeout(() => {
-                quoteEl.innerText = `"${cheerNotes[nextIdx]}"`;
-                quoteEl.style.opacity = '1';
-            }, 200);
-
-            triggerLoveShower();
-        }
-        function convertDriveImages() {
-            const images = document.querySelectorAll('img');
-
-            images.forEach((img) => {
-                const src = img.getAttribute('src');
-                if (src && src.includes('drive.google.com')) {
-                    const match = src.match(/\/d\/([a-zA-Z0-9_-]+)/) || src.match(/id=([a-zA-Z0-9_-]+)/);
-                    if (match && match[1]) {
-                        img.src = `https://drive.google.com/thumbnail?id=${match[1]}&sz=w1000`;
-                    }
-                }
-            });
-        }
-
-        // Page load hone par run karega
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', convertDriveImages);
-        } else {
-            convertDriveImages();
-        }
-
-        // overley function to open the gift screen
-        function openGiftScreen() {
-            const welcome = document.getElementById('welcome-screen');
-            if (welcome) {
-                // Smooth fade-out aur zoom-out effect
-                welcome.style.opacity = '0';
-                welcome.style.transform = 'scale(1.08)';
-                welcome.style.pointerEvents = 'none';
-
-                setTimeout(() => {
-                    welcome.style.display = 'none';
-                }, 700);
-            }
-        }
-
-
-
-
-        // 1. Falling / Floating Bubbles Generator
-        function createBubbles() {
-            const container = document.getElementById('bubble-container');
-            if (!container) return;
-
-            for (let i = 0; i < 22; i++) {
-                const bubble = document.createElement('div');
-                bubble.classList.add('bubble');
-                const size = Math.random() * 35 + 15; // 15px se 50px
-                bubble.style.width = `${size}px`;
-                bubble.style.height = `${size}px`;
-                bubble.style.left = `${Math.random() * 100}%`;
-                bubble.style.animationDuration = `${Math.random() * 5 + 6}s`; // 6s - 11s speed
-                bubble.style.animationDelay = `${Math.random() * 4}s`;
-                container.appendChild(bubble);
-            }
-        }
-        createBubbles();
-
-        // 2. Scratch Card Canvas Logic (Supports Mouse & Mobile Touch)
-        document.querySelectorAll('.scratch-card').forEach((card) => {
-            const canvas = card.querySelector('.scratch-canvas');
-            const ctx = canvas.getContext('2d');
-
-            function initCanvas() {
-                canvas.width = card.offsetWidth;
-                canvas.height = card.offsetHeight;
-
-                // Golden/Bronze Scratch Cover
-                ctx.fillStyle = '#9b8846';
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-                // Cover Text
-                ctx.font = 'bold 13px sans-serif';
-                ctx.fillStyle = '#fef3c7';
-                ctx.textAlign = 'center';
-                ctx.fillText('✨ SCRATCH TO REVEAL ✨', canvas.width / 2, canvas.height / 2 + 5);
-            }
-
-            initCanvas();
-
-            let isDrawing = false;
-
-            function scratch(e) {
-                if (!isDrawing) return;
-                const rect = canvas.getBoundingClientRect();
-                const x = (e.clientX || (e.touches && e.touches[0].clientX)) - rect.left;
-                const y = (e.clientY || (e.touches && e.touches[0].clientY)) - rect.top;
-
-                ctx.globalCompositeOperation = 'destination-out';
-                ctx.beginPath();
-                ctx.arc(x, y, 20, 0, Math.PI * 2);
-                ctx.fill();
-            }
-
-            // Mouse Events
-            canvas.addEventListener('mousedown', (e) => { isDrawing = true; scratch(e); });
-            window.addEventListener('mousemove', scratch);
-            window.addEventListener('mouseup', () => { isDrawing = false; });
-
-            // Touch Events for Phone
-            canvas.addEventListener('touchstart', (e) => {
-                isDrawing = true;
-                scratch(e);
-            }, { passive: true });
-
-            canvas.addEventListener('touchmove', (e) => {
-                e.preventDefault(); // Scratch karte waqt screen scroll hone se rokta hai
-                scratch(e);
-            }, { passive: false });
-
-            canvas.addEventListener('touchend', () => { isDrawing = false; });
-        });
-    </script>
+            <canvas class="scratch-canvas absolute inset-0 z-10 h-full w-full cursor-pointer"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================
+         SECTION 8: SIBLING RULES AGREEMENT
+         Kaam: Legal format mein funny bhai-behan terms & conditions.
+         ================================================================= -->
+    <section>
+      <div class="text-center mb-6">
+        <span class="text-xs font-bold uppercase tracking-widest text-dustyRose">Legally Binding</span>
+        <h2 class="font-serif text-2xl font-bold text-deepPlum mt-1">The Official Sibling Agreement 📜</h2>
+      </div>
+      <div class="space-y-3 text-xs">
+        <div class="bg-white p-4 rounded-xl border border-stone-200 flex items-start gap-3 shadow-sm">
+          <span class="text-lg">🛡️</span>
+          <div>
+            <h3 class="font-bold text-stone-800">Clause 1: 100% Defense Mechanism</h3>
+            <p class="text-stone-500 mt-0.5">Duniya tere khilaaf ho jaye, tera bhai hamesha teri side khada rahega (chahe galti teri hi kyun na ho!).</p>
+          </div>
+        </div>
+        <div class="bg-white p-4 rounded-xl border border-stone-200 flex items-start gap-3 shadow-sm">
+          <span class="text-lg">🍕</span>
+          <div>
+            <h3 class="font-bold text-stone-800">Clause 2: The Last Bite Tax</h3>
+            <p class="text-stone-500 mt-0.5">Chahe main kitna bhi natak karu, aakhiri slice hamesha tera hi rahega.</p>
+          </div>
+        </div>
+        <div class="bg-white p-4 rounded-xl border border-stone-200 flex items-start gap-3 shadow-sm">
+          <span class="text-lg">📞</span>
+          <div>
+            <h3 class="font-bold text-stone-800">Clause 3: 24/7 Venting Hotline</h3>
+            <p class="text-stone-500 mt-0.5">Kabhi bhi rona ho, kisi ki chugli karni ho ya gussa nikalna ho, phone uthane me 1 second lagega.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================
+         SECTION 9: EMOTIONAL LETTER
+         Kaam: Bhai ka behen ke liye heartfelt emotional note & hug trigger.
+         ================================================================= -->
+    <section class="relative bg-white p-8 rounded-3xl border border-rose-200/80 shadow-xl overflow-hidden">
+      <div class="w-10 h-10 rounded-full bg-rose-50 border border-rose-200 text-rose-500 flex items-center justify-center mx-auto mb-4 text-xl">✉️</div>
+      <h3 class="font-serif text-2xl text-deepPlum text-center font-bold mb-4">Direct Dil Se...</h3>
+      <div class="space-y-4 font-serif text-sm text-stone-700 leading-relaxed italic">
+        <p>"Zindagi me dost aayenge, jayenge, log badlenge... lekin ek rishta jo hamesha constant rahega, wo hai humara.</p>
+        <p>Main shayad roz bolta nahi hoon ya tareef karne me thoda ajeeb lagta hai, par sach yeh hai ki tere bina meri life bilkul boring hoti. Teri hasi, tera choti choti baaton pe gussa hona, aur fir 'Bhai meri sun na' bolna — yahi sab meri duniya hai.</p>
+        <p>Chahe tu kitni bhi badi ho jaye, tera bhai hamesha tera sabse bada supporter aur teri sabse majboot dhaal ban ke rahega. Always proud of you, Behna!"</p>
+      </div>
+      <div class="mt-8 pt-6 border-t border-stone-100 flex items-center justify-between">
+        <div>
+          <p class="text-[10px] uppercase font-bold tracking-widest text-stone-400">Love You Forever</p>
+          <p class="font-handwritten text-2xl font-bold text-dustyRose">Subhchintak ❤️</p>
+        </div>
+        <button onclick="triggerLoveShower()" class="px-4 py-2 bg-rose-50 hover:bg-rose-100 text-dustyRose rounded-full text-xs font-bold transition-colors cursor-pointer">
+          Hug Bhai 🫂
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="text-center py-10 text-stone-400 text-xs border-t border-stone-200/50">
+    <p class="font-serif italic text-stone-500">Made exclusively for the prettiest sister in the world.</p>
+    <p class="mt-1 text-[10px] tracking-widest text-stone-400">#aT_Rahul😇</p>
+  </footer>
+
+  <!-- External JavaScript File Link -->
+  <script src="script.js"></script>
 </body>
 
 </html>
