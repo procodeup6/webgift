@@ -154,7 +154,7 @@ function playMusic() {
   if (!bgAudio) return;
   bgAudio.play().then(() => {
     isMusicPlaying = true;
-    if (musicBtn) musicBtn.innerText = '⏸️'; // Icon change to Pause
+    if (musicBtn) musicBtn.innerText = '🎵'; // Icon change to Pause
   }).catch((err) => {
     console.log("Autoplay waiting for user gesture:", err);
   });
@@ -166,7 +166,7 @@ function toggleMusic() {
   if (isMusicPlaying) {
     bgAudio.pause();
     isMusicPlaying = false;
-    if (musicBtn) musicBtn.innerText = '🎵'; // Icon change to Music Note
+    if (musicBtn) musicBtn.innerText = '⏸️'; // Icon change to Music Note
   } else {
     playMusic();
   }
