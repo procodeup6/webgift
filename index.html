@@ -162,9 +162,7 @@
         </div>
     </div>
 
-    <audio id="bg-audio" loop preload="auto">
-        <source src="ad.mp3" type="audio/ogg">
-    </audio>
+    <audio id="bg-audio" src="ad.mp3" loop preload="auto"></audio>
 
     <div class="fixed bottom-6 right-6 z-40 flex flex-col gap-3">
         <button onclick="triggerLoveShower()" title="Shower Love"
@@ -642,34 +640,50 @@
            3. AUDIO & INTERACTIVE HELPERS
            ========================================================== */
         let isMusicPlaying = false;
-const bgAudio = document.getElementById('bg-audio');
-const musicBtn = document.getElementById('music-btn');
+        const bgAudio = document.getElementById('bg-audio');
+        const musicBtn = document.getElementById('music-btn');
 
-// Music play function
-function playMusic() {
-    if (!bgAudio) return;
-    bgAudio.play().then(() => {
-        isMusicPlaying = true;
-        if (musicBtn) musicBtn.innerText = '🎵';
-    }).catch(() => {
-        // Browser autoplay policy ke liye safe catch
-    });
-}
+        // Music play function
 
-// Button click par sirf Pause / Play toggle karega
-function toggleMusic() {
-    if (!bgAudio) return;
-    if (isMusicPlaying) {
-        bgAudio.pause();
-        isMusicPlaying = false;
-        if (musicBtn) musicBtn.innerText = '⏸️';
-    } else {
+        let isMusicPlaying = false;
+        const bgAudio = document.getElementById('bg-audio');
+        const musicBtn = document.getElementById('music-btn');
+
+        function playMusic() {
+          if (!bgAudio) {
+            console.error("Audio element '#bg-audio' nahi mila! HTML check karein.");
+            return;
+          }
+
+          bgAudio.play().then(() => {
+            isMusicPlaying = true;
+            if (musicBtn) musicBtn.innerText = '🎵';
+            console.log("Music playing successfully!");
+          }).catch((err) => {
+            console.warn("Play error / Autoplay blocked:", err.message);
+          });
+        }
+
+        function toggleMusic() {
+          if (!bgAudio) return;
+          if (isMusicPlaying) {
+            bgAudio.pause();
+            isMusicPlaying = false;
+            if (musicBtn) musicBtn.innerText = '⏸️';
+          } else {
+            playMusic();
+          }
+        }
+
+        // User ke kisi bhi pehle tap/click par audio trigger
+        document.addEventListener('pointerdown', function startMusicOnce() {
+          if (!isMusicPlaying) {
+            playMusic();
+          }
+        }, { once: true });
+        
+        // 1. Page load hote hi auto-play karne ki koshish karega
         playMusic();
-    }
-}
-
-// 1. Page load hote hi auto-play karne ki koshish karega
-playMusic();
 
 // 2. Browser policy bypass: Screen par kahin bhi pehla touch/click (jaise Open Gift button) hote hi music automatic shuru ho jayega
 document.addEventListener('click', function autoStartOnFirstClick() {
